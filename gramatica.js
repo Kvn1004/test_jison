@@ -83,12 +83,21 @@ performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* actio
 
 var $0 = $$.length - 1;
 switch (yystate) {
+case 1:
+ return $$[$0-1]; 
+break;
+case 2:
+ this.$ = $$[$0-1] + $$[$0]; 
+break;
+case 3:
+ this.$ = $$[$0]; 
+break;
 case 4:
  console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); 
 break;
 case 5:
-
-		console.log('El valor de la expresión es: ' + $$[$0-2]);
+	
+		this.$ = '<p>El valor de la expresión es: ' + $$[$0-2] + '<\p>';
 	
 break;
 case 6:

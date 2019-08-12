@@ -44,18 +44,18 @@
 %% /* Definición de la gramática */
 
 ini
-	: instrucciones EOF
+	: instrucciones EOF { return $1; }
 ;
 
 instrucciones
-	: instruccion instrucciones
-	| instruccion
+	: instruccion instrucciones { $$ = $1 + $2; }
+	| instruccion { $$ = $1; }
 	| error { console.error('Este es un error sintáctico: ' + yytext + ', en la linea: ' + this._$.first_line + ', en la columna: ' + this._$.first_column); }
 ;
 
 instruccion
-	: REVALUAR CORIZQ expresion CORDER PTCOMA {
-		console.log('El valor de la expresión es: ' + $3);
+	: REVALUAR CORIZQ expresion CORDER PTCOMA {	
+		$$ = '<p>El valor de la expresión es: ' + $3 + '<\p>';
 	}
 ;
 

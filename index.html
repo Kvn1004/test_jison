@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <title>Ejercicio Practico 1</title>
+    <head>
+        <h1>Entrada</h1>   
+    </head>
+    <body>
+        <p><textarea id="entrada" cols="50" rows="10"></textarea></p>
+        <p><button id="button">Analizar</button></p>
+        <h1>Resultado</h1>
+        <p><label id="salida"></label></p>
+    </body>
+
+    <footer>
+            <script src="./jquery.js"></script>
+            <script src="./gramatica.js"></script>
+            <script>
+            $(document).ready(function(){
+                $("button").click(function(){
+                    try{
+                        var result = gramatica.parse($("#entrada").val())
+                        $("#salida").html(result);
+                    }catch(e){
+                        $("#salida").html(String(e));
+                    }
+                })
+            })
+            </script>
+    </footer>
+
+</html>
